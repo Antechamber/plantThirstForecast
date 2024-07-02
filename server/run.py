@@ -23,14 +23,14 @@ def current():
 
 
 @app.route("/forecast")
-def current():
+def forecast():
     response = requests.get(
         f"https://api.weatherapi.com/v1/forecast.json?q={zipCode}&days=3&key={apiKey}")
     return json.loads(response.text)
 
 
 @app.route("/historical")
-def current():
+def historical():
     todaysDate = datetime.now().strftime("%Y-%m-%d")
     threeDaysAgo = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d")
     response = requests.get(
